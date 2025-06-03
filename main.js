@@ -1,25 +1,23 @@
-// Funzioni per migliorare l'interattività del sito
-
 document.addEventListener('DOMContentLoaded', function() {
     // Animazione smooth scroll per i link di navigazione
     document.querySelectorAll('nav a').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
-    const targetId = this.getAttribute('href');
-    
-    // Solo per link interni con ID (es. "#ringraziamenti")
-    if (targetId.startsWith('#')) {
-        e.preventDefault();
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-            window.scrollTo({
-                top: targetElement.offsetTop - 80,
-                behavior: 'smooth'
-            });
-        }
-    }
-});
+            const targetId = this.getAttribute('href');
+            
+            // Solo per link interni con ID (es. "#ringraziamenti")
+            if (targetId.startsWith('#')) {
+                e.preventDefault();
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        }); // <-- correttamente chiuso qui
+    }); // <-- correttamente chiuso qui
 
-    
     // Evidenziazione della sezione attiva durante lo scroll
     window.addEventListener('scroll', function() {
         const sections = document.querySelectorAll('section');
@@ -43,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-    
+
     // Animazione per le experience cards al caricamento
     const experienceCards = document.querySelectorAll('.experience-card');
     
