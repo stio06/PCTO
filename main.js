@@ -4,17 +4,21 @@ document.addEventListener('DOMContentLoaded', function() {
     // Animazione smooth scroll per i link di navigazione
     document.querySelectorAll('nav a').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            
+    const targetId = this.getAttribute('href');
+    
+    // Solo per link interni con ID (es. "#ringraziamenti")
+    if (targetId.startsWith('#')) {
+        e.preventDefault();
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
             window.scrollTo({
                 top: targetElement.offsetTop - 80,
                 behavior: 'smooth'
             });
-        });
-    });
+        }
+    }
+});
+
     
     // Evidenziazione della sezione attiva durante lo scroll
     window.addEventListener('scroll', function() {
